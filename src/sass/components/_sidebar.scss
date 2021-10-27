@@ -1,0 +1,30 @@
+.sidebar {
+    max-width: 64px;
+    height: 100vh;
+    background-color: $main-color;
+    color: $txt-white;
+    padding: 15px 0;
+
+    @include flex(center, space-between);
+    flex-direction: column;
+    &-top,
+    &-bottom {
+        @include flex(center, space-between);
+        flex-direction: column;
+    }
+    &-icon {
+        width: 50px;
+        height: 40px;
+        line-height: 54px;
+        text-align: center;
+        cursor: pointer;
+    }
+    .icon {
+        font-size: 24px;
+    }
+    .active {
+        background-color: rgba(68, 68, 68, 0.322);
+        border-radius: 10px;
+        border: 1px solid rgba(68, 68, 68, 0.322);
+    }
+}

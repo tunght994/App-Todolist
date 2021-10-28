@@ -13,15 +13,8 @@ const Layout = () => {
                         <div style={{ display: "flex" }}>
                             <SideBar {...props} />
                             {/* <div className="container"> */}
-                            <SpreadsheetComponent
-                                allowOpen={true}
-                                openUrl="https://ej2services.syncfusion.com/production/web-services/api/spreadsheet/open"
-                                // beforeOpen={this.beforeOpen.bind(this)}
-                                allowSave={true}
-                                saveUrl="https://ej2services.syncfusion.com/production/web-services/api/spreadsheet/save"
-                            />
 
-                            {/* <Routes /> */}
+                            <Routes />
                             {/* </div> */}
                         </div>
                     </div>

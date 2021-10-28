@@ -15,7 +15,7 @@ const sidebarIconTop = [
     },
     {
         display: <FolderOpen className='icon' />,
-        path: '/'
+        path: '/folder'
     },
     {
         display: <AccessTime className='icon' />,

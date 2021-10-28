@@ -2,7 +2,6 @@ import React from "react";
 import { BrowserRouter, Route } from "react-router-dom";
 import SideBar from "../../components/SideBar";
 import Routes from "../../routes/Routes";
-import { SpreadsheetComponent } from "@syncfusion/ej2-react-spreadsheet";
 
 const Layout = () => {
     return (

@@ -1,6 +1,102 @@
 .home {
     width: 100vw;
     max-width: 100%;
-    @include flex(stretch, space-between);
     margin: 100px 50px 0 50px;
+    @include flex(stretch, space-between);
+    &-left {
+        &-heading {
+            @include flex(stretch, space-between);
+        }
+        &-content {
+            @include flex(stretch, space-between);
+            position: relative;
+            margin-top: 50px;
+            cursor: pointer;
+            &-title {
+                width: 150px;
+                @include flex(center, flex-start);
+                h1 {
+                    margin-right: 10px;
+                    font-size: 50px;
+                }
+                span {
+                    font-size: 16px;
+                }
+            }
+        }
+    }
+    &-right {
+        &-top {
+            @include flex(flex-end, flex-end);
+            flex-direction: column;
+        }
+        &-title {
+            @include flex(flex-end, flex-end);
+        }
+        &-add {
+            @include flex(center, center);
+            width: 100px;
+            height: 40px;
+            color: $txt-white;
+            background: #3576ba;
+            font-weight: bold;
+            font-size: 16px;
+
+            border: none;
+            border-radius: 4px;
+            margin-right: 14px;
+            &-icon {
+                font-size: 30px !important;
+                margin-right: 6px;
+            }
+        }
+        &-feedback {
+            width: 50px;
+            height: 40px;
+            background: #eeeeee;
+            text-align: center;
+            &-icon {
+                font-size: 30px !important;
+                font-weight: normal;
+                margin-top: 4px;
+            }
+        }
+        &-content {
+            position: relative;
+            margin-top: 50px;
+            width: 150px;
+            &-title {
+                @include flex(center, flex-start);
+                h1 {
+                    margin-right: 10px;
+                    font-size: 50px;
+                }
+                span {
+                    font-size: 16px;
+                }
+            }
+        }
+        &-card {
+            @include flex(center, flex-start);
+            flex-wrap: wrap;
+            margin-top: 50px;
+        }
+    }
+
+    .underline {
+        width: 100%;
+        height: 0.25rem;
+        background: #ccc;
+        position: absolute;
+        bottom: 0;
+        &:hover {
+            background: blue;
+        }
+    }
+    .right {
+        right: 0;
+    }
+    .active {
+        background: blue;
+    }
 }

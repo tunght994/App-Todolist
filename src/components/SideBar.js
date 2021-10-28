@@ -11,7 +11,7 @@ const sidebarIconTop = [
     },
     {
         display: <NotificationsNone className='icon' />,
-        path: '/'
+        path: '/home'
     },
     {
         display: <FolderOpen className='icon' />,
@@ -27,7 +27,7 @@ const sidebarIconTop = [
     },
     {
         display: <Add className='icon' />,
-        path: '/'
+        path: '/add'
     },
 ]
 const sidebarIconBottom = [

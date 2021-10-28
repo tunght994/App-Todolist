@@ -7,7 +7,7 @@ import { useLocation } from 'react-router'
 const sidebarIconTop = [
     {
         display: <Home className='icon' />,
-        path: '/'
+        path: '/home'
     },
     {
         display: <NotificationsNone className='icon' />,
@@ -55,7 +55,7 @@ const SideBar = () => {
                 {
                     sidebarIconTop.map((item, index) => (
                         <div className={`sidebar-icon ${index === activeNav ? 'active' : ''}`} key={index}>
-                            <Link to='/'>
+                            <Link to={item.path}>
                                 {item.display}
                             </Link>
                         </div>

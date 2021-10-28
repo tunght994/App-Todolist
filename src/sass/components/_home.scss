@@ -1,0 +1,6 @@
+.home {
+    width: 100vw;
+    max-width: 100%;
+    @include flex(stretch, space-between);
+    margin: 100px 50px 0 50px;
+}

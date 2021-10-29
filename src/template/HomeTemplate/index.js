@@ -5,10 +5,11 @@ export default function HomeTemplate({ Component, ...props }) {
     return (
         <Route
             {...props}
-            render={() => {
+            render={(routeProps) => {
+                console.log(routeProps)
                 return (
                     <>
-                        <Component />
+                        <Component {...routeProps} />
                     </>
                 );
             }}

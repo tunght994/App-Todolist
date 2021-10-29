@@ -1,11 +1,11 @@
-import { Add, HelpOutline } from '@mui/icons-material'
-import React from 'react'
-import { Link } from 'react-router-dom'
-import Card from './Card'
+import { Add, HelpOutline } from "@mui/icons-material";
+import React from "react";
+import { Link } from "react-router-dom";
+import Card from "../../components/Card";
 
 const Home = () => {
     return (
-        <div className='home'>
+        <div className="home">
             <div className="home-left">
                 <div className="home-left-title">
                     <h1>Welcome, Hothanhtung12</h1>
@@ -28,16 +28,14 @@ const Home = () => {
                 </div>
             </div>
             <div className="home-right">
-                <div className=''>
+                <div className="">
                     <div className="home-right-title">
-                        <button className='home-right-add'>
-                            <Add className='home-right-add-icon' />
-                            <Link to='/add'>
-                                Create
-                            </Link>
+                        <button className="home-right-add">
+                            <Add className="home-right-add-icon" />
+                            <Link to="/add">Create</Link>
                         </button>
-                        <Link className="home-right-feedback" to='/s'>
-                            <HelpOutline className='home-right-feedback-icon' />
+                        <Link className="home-right-feedback" to="/s">
+                            <HelpOutline className="home-right-feedback-icon" />
                         </Link>
                     </div>
                     <div className="home-right-content ">
@@ -52,11 +50,10 @@ const Home = () => {
                     <Card />
                     <Card />
                     <Card />
-
                 </div>
             </div>
         </div>
-    )
-}
+    );
+};
 
-export default Home
+export default Home;

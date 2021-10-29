@@ -1,24 +1,23 @@
 import React from "react";
-import { BrowserRouter, Route } from "react-router-dom";
 import SideBar from "../../components/SideBar";
-import Routes from "../../routes/Routes";
+import { renderRouteCreate, renderRouteHome } from "../../routes/Routes";
+import { BrowserRouter, Route, Switch } from "react-router-dom";
+import PageNotFound from "../PageNotFound";
 
 const Layout = () => {
     return (
         <BrowserRouter>
-            <Route
-                render={(props) => (
-                    <div>
-                        <div style={{ display: "flex" }}>
-                            <SideBar {...props} />
-                            {/* <div className="container"> */}
+            <div>
+                <div style={{ display: "flex" }}>
+                    <SideBar />
+                    <Switch>
+                        {renderRouteHome()}
+                        {renderRouteCreate()}
 
-                            <Routes />
-                            {/* </div> */}
-                        </div>
-                    </div>
-                )}
-            />
+                        <Route path="" component={PageNotFound} />
+                    </Switch>
+                </div>
+            </div>
         </BrowserRouter>
     );
 };

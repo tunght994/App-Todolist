@@ -64,9 +64,8 @@ const SideBar = () => {
             <div className="sidebar-top">
                 {sidebarIconTop.map((item, index) => (
                     <div
-                        className={`sidebar-icon ${
-                            index === activeNav ? "active" : ""
-                        }`}
+                        className={`sidebar-icon ${index === activeNav ? "active" : ""
+                            }`}
                         key={index}
                     >
                         <Link to={item.path}>{item.display}</Link>

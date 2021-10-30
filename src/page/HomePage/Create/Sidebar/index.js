@@ -8,7 +8,7 @@ import { NavLink } from "react-router-dom";
 import InputIcon from "@mui/icons-material/Input";
 export default function Sidebar() {
     return (
-        <div className="newSidebar">
+        <div className="newSidebar overview-create">
             <h3 className="newSidebar__title newSidebar__item">
                 Solution center
             </h3>

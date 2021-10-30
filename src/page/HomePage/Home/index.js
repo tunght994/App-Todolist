@@ -1,7 +1,7 @@
 import { Add, HelpOutline } from "@mui/icons-material";
 import React from "react";
 import { Link } from "react-router-dom";
-import Card from "../../components/Card";
+import Card from "../../../components/Card";
 
 const Home = () => {
     return (

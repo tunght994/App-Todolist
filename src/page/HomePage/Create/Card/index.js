@@ -9,7 +9,7 @@ export default function Card() {
                 <div
                     className="create-card__border"
                     onClick={() => {
-                        history.push("/card-task-list");
+                        history.push("/task-list/12");
                     }}
                 >
                     <div className="create-card__img"></div>

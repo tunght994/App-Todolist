@@ -5,6 +5,7 @@ import HomeTemplate from "../template/HomeTemplate";
 import Login from "../page/UserPage/Login";
 import UserTemplate from "../template/UserTemplate";
 import Register from "../page/UserPage/Register";
+import TaskList from "../page/HomePage/TaskList";
 
 const routeHome = [
     {
@@ -21,6 +22,11 @@ const routeHome = [
         path: "/add",
         exact: false,
         Component: Create,
+    },
+    {
+        path: "/task-list/:id",
+        exact: false,
+        Component: TaskList,
     },
 ];
 

@@ -6,8 +6,10 @@
         margin-bottom: 10px;
         box-shadow: 0px 1px 2px 0px rgba(9, 30, 66, 0.25);
         cursor: pointer;
+        position: relative;
         &-header {
             padding-bottom: 10px;
+            font-size: 14px;
         }
         &-body {
             display: flex;
@@ -16,6 +18,71 @@
                 margin-left: 5px;
                 font-size: 14px;
             }
+        }
+    }
+}
+.lowest {
+    color: greenyellow;
+}
+.low {
+    color: green;
+}
+.medium {
+    color: #ffc107;
+}
+.high {
+    color: red;
+}
+.moreIcon {
+    position: absolute;
+    right: 4px;
+    top: 10px;
+}
+.memuMore {
+    position: absolute;
+    padding: 10px 0;
+    right: 0;
+    top: 100%;
+    background-color: #fff;
+    border-radius: 4px;
+    box-shadow: 0 0 2px 1px rgb(131, 126, 126);
+    min-width: 100px;
+    text-align: right;
+    z-index: 1;
+    &__ul {
+        position: relative;
+        min-width: 100%;
+    }
+    &__li {
+        background-color: #fff;
+        font-size: 14px;
+        padding: 4px 8px;
+        width: auto;
+        &:hover {
+            background-color: rgb(68, 174, 236);
+            color: #fff;
+        }
+    }
+    &__ulChild {
+        display: none;
+        position: absolute;
+        right: 100%;
+        background-color: #fff;
+        top: 0;
+        box-shadow: 0 0 2px 1px rgb(131, 126, 126);
+        padding: 5px 0;
+        min-width: 60px;
+        border-radius: 4px;
+        z-index: 2;
+    }
+    &__liHaveChild {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        position: relative;
+        &:hover .memuMore__ulChild {
+            display: block;
+            color: #000;
         }
     }
 }

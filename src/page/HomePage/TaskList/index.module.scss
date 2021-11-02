@@ -18,14 +18,14 @@
     width: 100%;
     min-height: 95%;
     overflow: auto;
-    &__rowTitle {
+    &__colTitle {
         margin-bottom: 10px;
     }
-    &__row {
+    &__col {
         padding: 10px;
         padding-bottom: 0;
     }
-    &__rowContent {
+    &__colContent {
         padding: 10px;
         width: 236px;
         background: rgb(244, 245, 247);

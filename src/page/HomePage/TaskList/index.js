@@ -1,9 +1,56 @@
-import React from "react";
+import React, { useEffect } from "react";
 import style from "./index.module.scss";
 import clsx from "clsx";
 import Card from "./Card.js";
+import { useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
+import { actionGetProjectById } from "../../../redux/actions/ProjectActions";
+import { useParams } from "react-router-dom";
 
 export default function TaskList() {
+    const { error, projectDetail, isLoading } = useSelector(
+        (state) => state.projectReducer
+    );
+
+    const { id } = useParams();
+    const dispatch = useDispatch();
+
+    useEffect(() => {
+        dispatch(actionGetProjectById(id));
+    }, [dispatch, id]);
+
+    if (isLoading) {
+        return <div>Loading...</div>;
+    }
+
+    if (error) {
+        return <div>{error.response.data.content}</div>;
+    }
+
+    const renderCardTask = (listTask) => {
+        return listTask?.map((task) => {
+            return <Card key={task.taskId} task={task} />;
+        });
+    };
+
+    const renderTaskListCol = () => {
+        return projectDetail?.lstTask.map((task) => {
+            return (
+                <div
+                    key={task.statusId}
+                    className={clsx(style["taskList__col"])}
+                >
+                    <div className={clsx(style["taskList__colContent"])}>
+                        <h3 className={clsx(style.taskList__colTitle)}>
+                            {task.statusName}
+                        </h3>
+                        {renderCardTask(task.lstTaskDeTail)}
+                    </div>
+                </div>
+            );
+        });
+    };
+
     return (
         <div id={clsx(style["task-list"])}>
             <div>
@@ -13,7 +60,7 @@ export default function TaskList() {
                             href="/"
                             className={clsx(style["presentation__item -link"])}
                         >
-                            Project list
+                            Project List
                         </a>
                     </li>
                     <li className={clsx(style.presentation__item)}>/</li>
@@ -23,47 +70,12 @@ export default function TaskList() {
                             href="/"
                             className={clsx(style["presentation__item -link"])}
                         >
-                            Project name
+                            {projectDetail?.projectName}
                         </a>
                     </li>
                 </ul>
             </div>
-            <div className={clsx(style["taskList"])}>
-                <div className={clsx(style["taskList__row"])}>
-                    <div className={clsx(style["taskList__rowContent"])}>
-                        <h3 className={clsx(style.taskList__rowTitle)}>
-                            Compelete
-                        </h3>
-                        <Card />
-                        <Card />
-                        <Card />
-                    </div>
-                </div>
-                <div className={clsx(style["taskList__row"])}>
-                    <div className={clsx(style["taskList__rowContent"])}>
-                        <h3 className={clsx(style.taskList__rowTitle)}>
-                            Compelete
-                        </h3>
-                        <Card />
-                    </div>
-                </div>
-                <div className={clsx(style["taskList__row"])}>
-                    <div className={clsx(style["taskList__rowContent"])}>
-                        <h3 className={clsx(style.taskList__rowTitle)}>
-                            Compelete
-                        </h3>
-                        <Card />
-                    </div>
-                </div>
-                <div className={clsx(style["taskList__row"])}>
-                    <div className={clsx(style["taskList__rowContent"])}>
-                        <h3 className={clsx(style.taskList__rowTitle)}>
-                            Compelete
-                        </h3>
-                        <Card />
-                    </div>
-                </div>
-            </div>
+            <div className={clsx(style["taskList"])}>{renderTaskListCol()}</div>
         </div>
     );
 }

@@ -5,7 +5,7 @@ import Card from "./Card.js";
 import { useSelector } from "react-redux";
 import { useDispatch } from "react-redux";
 import { actionGetProjectById } from "../../../redux/actions/ProjectActions";
-import { useParams } from "react-router-dom";
+import { NavLink, useParams } from "react-router-dom";
 
 export default function TaskList() {
     const { error, projectDetail, isLoading } = useSelector(
@@ -29,7 +29,14 @@ export default function TaskList() {
 
     const renderCardTask = (listTask) => {
         return listTask?.map((task) => {
-            return <Card key={task.taskId} task={task} />;
+            return (
+                <Card
+                    id={id}
+                    taskId={task.taskId}
+                    key={task.taskId}
+                    task={task}
+                />
+            );
         });
     };
 
@@ -66,12 +73,12 @@ export default function TaskList() {
                     <li className={clsx(style.presentation__item)}>/</li>
                     <li className={clsx(style.presentation__item)}>
                         {" "}
-                        <a
-                            href="/"
+                        <NavLink
+                            to={`/task-list/${id}`}
                             className={clsx(style["presentation__item -link"])}
                         >
                             {projectDetail?.projectName}
-                        </a>
+                        </NavLink>
                     </li>
                 </ul>
             </div>

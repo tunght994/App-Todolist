@@ -71,9 +71,12 @@
         top: 0;
         box-shadow: 0 0 2px 1px rgb(131, 126, 126);
         padding: 5px 0;
-        min-width: 60px;
+        min-width: 80px;
         border-radius: 4px;
         z-index: 2;
+        li {
+            text-transform: capitalize;
+        }
     }
     &__liHaveChild {
         display: flex;

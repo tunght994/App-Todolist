@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import BugReportIcon from "@mui/icons-material/BugReport";
 
 import clsx from "clsx";
@@ -6,10 +6,68 @@ import styles from "./index.module.scss";
 import MoreVertIcon from "@mui/icons-material/MoreVert";
 import AddCircleOutlineIcon from "@mui/icons-material/AddCircleOutline";
 import ArrowBackIosNewIcon from "@mui/icons-material/ArrowBackIosNew";
+import { useDispatch } from "react-redux";
+import { getAllDefaulValue } from "../../../../redux/actions/DefaultValueActions";
+import { useSelector } from "react-redux";
+import { actionUpdateStatus } from "../../../../redux/actions/ProjectActions";
 export default function Card(props) {
-    const { task } = props;
+    const { task, taskId, id } = props;
     const { priorityId } = task.priorityTask;
     const [statusMoreMenu, setStatusMoreMenu] = useState("none");
+    const dispatch = useDispatch();
+    const { priority, status, taskType } = useSelector(
+        (state) => state.defaultValueReducer
+    );
+    console.log(status);
+    useEffect(() => {
+        dispatch(getAllDefaulValue());
+    }, [dispatch]);
+
+    const handleUpdateStatus = (item) => {
+        if (task.statusId !== item.statusId) {
+            dispatch(
+                actionUpdateStatus({
+                    taskId: +taskId,
+                    statusId: item.statusId,
+                    id,
+                })
+            );
+        }
+    };
+
+    const renderLiChildStatus = () => {
+        return status?.map((item, index) => {
+            return (
+                <li
+                    onClick={() => handleUpdateStatus(item)}
+                    key={index}
+                    className={styles["memuMore__li"]}
+                >
+                    {item.statusName}
+                </li>
+            );
+        });
+    };
+
+    const renderLiChildPriority = () => {
+        return priority?.map((item, index) => {
+            return (
+                <li key={index} className={styles["memuMore__li"]}>
+                    {item.description}
+                </li>
+            );
+        });
+    };
+
+    const renderLiChildTypeTask = () => {
+        return taskType?.map((item, index) => {
+            return (
+                <li key={index} className={styles["memuMore__li"]}>
+                    {item.taskType}
+                </li>
+            );
+        });
+    };
 
     const classPriority =
         priorityId === 1
@@ -19,6 +77,7 @@ export default function Card(props) {
             : priorityId === 3
             ? "low"
             : "lowest";
+
     return (
         <div
             onContextMenu={() => {
@@ -67,6 +126,9 @@ export default function Card(props) {
                         >
                             <ArrowBackIosNewIcon />
                             Trạng thái
+                            <ul className={clsx(styles["memuMore__ulChild"])}>
+                                {renderLiChildStatus()}
+                            </ul>
                         </li>
                         <li
                             className={clsx(
@@ -77,16 +139,7 @@ export default function Card(props) {
                             <ArrowBackIosNewIcon />
                             Tốc độ task
                             <ul className={clsx(styles["memuMore__ulChild"])}>
-                                <li className={styles["memuMore__li"]}>hihi</li>
-                                <li className={styles["memuMore__li"]}>hihi</li>
-                                <li className={styles["memuMore__li"]}>hihi</li>
-                                <li className={styles["memuMore__li"]}>hihi</li>
-                                <li className={styles["memuMore__li"]}>hihi</li>
-                                <li className={styles["memuMore__li"]}>hihi</li>
-                                <li className={styles["memuMore__li"]}>hihi</li>
-                                <li className={styles["memuMore__li"]}>hihi</li>
-                                <li className={styles["memuMore__li"]}>hihi</li>
-                                <li className={styles["memuMore__li"]}>hihi</li>
+                                {renderLiChildPriority()}
                             </ul>
                         </li>
                         <li
@@ -97,6 +150,9 @@ export default function Card(props) {
                         >
                             <ArrowBackIosNewIcon />
                             Loại task
+                            <ul className={clsx(styles["memuMore__ulChild"])}>
+                                {renderLiChildTypeTask()}
+                            </ul>
                         </li>
                         <li className={styles["memuMore__li"]}>Chi tiết</li>
                     </ul>

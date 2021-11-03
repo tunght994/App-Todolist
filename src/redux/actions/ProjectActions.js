@@ -2,7 +2,7 @@ import { projectServices } from "../../services/projectServices";
 import * as ActionType from "../constants/ProjectConstants";
 export const actionGetProjectById = (id) => {
     return async (dispatch) => {
-        dispatch(actionGetProjectRequest());
+        // dispatch(actionGetProjectRequest());
         try {
             const result = await projectServices.getProjectDetailByIdServices(
                 id
@@ -13,9 +13,9 @@ export const actionGetProjectById = (id) => {
         }
     };
 };
-const actionGetProjectRequest = () => ({
-    type: ActionType.GET_PROJECT_REQUEST,
-});
+// const actionGetProjectRequest = () => ({
+//     type: ActionType.GET_PROJECT_REQUEST,
+// });
 const actionGetProjectSuccess = (data) => ({
     type: ActionType.GET_PROJECT_SUCCESS,
     payload: data,
@@ -24,3 +24,11 @@ const actionGetProjectFailed = (error) => ({
     type: ActionType.GET_PROJECT_FAILED,
     payload: error,
 });
+
+export const actionUpdateStatus = (info) => {
+    return async (dispatch) => {
+        console.log(info);
+        await projectServices.updateStatusServices(info);
+        dispatch(actionGetProjectById(info.id));
+    };
+};
